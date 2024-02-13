@@ -1,10 +1,11 @@
 import React from 'react';
 
-const NewsCard = ({ title, content }) => {
+const NewsCard = ({ title, content, date }) => {
   return (
-    <div className="bg-white rounded shadow p-4 mb-4">
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
+    <div className="news-card bg-gray-200 rounded shadow p-4 mb-4">
+      <h3 style={{ color: '#000' }} className="text-xl font-bold mb-2">{title}</h3>
       <p className="text-gray-800">{content}</p>
+      <p className="text-gray-500">{date}</p>
     </div>
   );
 };
