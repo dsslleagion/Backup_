@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
@@ -7,26 +7,24 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token'));
 
-  const login = async (formData) => {
+  const login = async (email, password) => {
     try {
-      // Substitua esta chamada fetch pela sua lógica de autenticação real
-      const response = await fetch('cliente/login', {
+      const response = await fetch('/cliente/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({ email, password }),
       });
 
       if (!response.ok) {
         throw new Error('Erro ao fazer login');
       }
 
-      const data = await response.json();
-      const authToken = data.token; // Supondo que o token retornado pelo backend seja chamado de "token"
-      
-      localStorage.setItem('token', authToken);
-      setToken(authToken);
+      const { token } = await response.json();
+
+      localStorage.setItem('token', token);
+      setToken(token);
     } catch (error) {
       console.error('Erro ao fazer login:', error.message);
     }

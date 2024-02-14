@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import './Login.css';
 
 const Login = () => {
-  const { login } = useAuth(); // Obtendo a função login do contexto de autenticação
+  const { login } = useAuth();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -15,9 +16,35 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login(formData); // Chama a função login com os dados do formulário
+    try {
+      const response = await fetch('/cliente/login', { // Aqui a função fetch está completa
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao fazer login');
+      }
+
+      const data = await response.json();
+      const authToken = data.token;
+
+      // Armazenar o token no localStorage
+      localStorage.setItem('token', authToken);
+
+      // Chamar a função de login com os dados do formulário
+      await login(formData);
+
+      // Redirecionar para a página NotFound após o login bem-sucedido
+      navigate('/NotFound');
+    } catch (error) {
+      console.error('Erro ao fazer login:', error.message);
+    }
   };
 
   return (
