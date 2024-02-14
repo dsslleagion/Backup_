@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import './Login.css';
 
 const Login = () => {
   const { login } = useAuth(); // Obtendo a função login do contexto de autenticação

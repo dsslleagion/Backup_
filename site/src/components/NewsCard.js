@@ -1,4 +1,5 @@
 import React from 'react';
+import './NewsCard.css';
 
 const NewsCard = ({ title, content, date }) => {
   return (

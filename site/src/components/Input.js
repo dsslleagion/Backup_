@@ -1,13 +1,13 @@
-// Input.js
-import React from 'react';
+import React, { useState } from 'react';
+import './input.css'; // Importando o arquivo de estilos CSS
 
 const Input = ({ label, type, value, onChange }) => {
   return (
-    <div className="mb-4">
-      <label className="block text-gray-700 font-bold mb-2">{label}</label>
+    <div className="input-container">
+      <label className="input-label">{label}</label>
       <input
         type={type}
-        className="border border-gray-400 rounded px-3 py-2 w-full"
+        className="input-field"
         value={value}
         onChange={onChange}
       />
