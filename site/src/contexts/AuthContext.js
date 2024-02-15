@@ -5,7 +5,10 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [userData, setUserData] = useState({
+    token: localStorage.getItem('token') || null,
+    cliente: null
+  });
 
   const login = async (email, password) => {
     try {
@@ -21,10 +24,10 @@ export const AuthProvider = ({ children }) => {
         throw new Error('Erro ao fazer login');
       }
 
-      const { token } = await response.json();
+      const { token, ...clienteData } = await response.json();
 
       localStorage.setItem('token', token);
-      setToken(token);
+      setUserData({ token, cliente: clienteData });
     } catch (error) {
       console.error('Erro ao fazer login:', error.message);
     }
@@ -32,11 +35,11 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('token');
-    setToken(null);
+    setUserData({ token: null, cliente: null });
   };
 
   return (
-    <AuthContext.Provider value={{ token, login, logout }}>
+    <AuthContext.Provider value={{ userData, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

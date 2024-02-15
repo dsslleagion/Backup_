@@ -40,8 +40,8 @@ const Login = () => {
       // Chamar a função de login com os dados do formulário
       await login(formData);
 
-      // Redirecionar para a página NotFound após o login bem-sucedido
-      navigate('/NotFound');
+      // Redirecionar para a página após o login bem-sucedido
+      navigate('/');
     } catch (error) {
       console.error('Erro ao fazer login:', error.message);
     }

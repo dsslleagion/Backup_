@@ -1,14 +1,14 @@
-// NavigationBar.js
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext'; // Importe o hook useAuth
 import logo from '../assets/logoccv.png';
 import './NavigationBar.css';
 
 const NavigationBar = () => {
-  const location = useLocation();
+  const { userData, logout } = useAuth(); // Obtendo os dados de autenticação do contexto
 
-  // Função para verificar se a página atual é a página de cadastro
-  const isCadastroPage = location.pathname === '/cadastro';
+  // Função para verificar se o usuário está autenticado
+  const isAuthenticated = userData.token !== null;
 
   return (
     <nav className="nav-container">
@@ -19,10 +19,16 @@ const NavigationBar = () => {
         <span className="logo-text">Coletivo Camara Vermelha</span>
       </div>
       <div className="nav-right">
-        {isCadastroPage ? (
-          <Link to="/login" className="nav-button">
-            Fazer Login
-          </Link>
+        {isAuthenticated ? (
+          <div className="dropdown">
+            <div className="dropdown-content">
+              <Link to="/NotFound" className="nav-button">Página 1</Link>
+              <Link to="/NotFound" className="nav-button">Página 2</Link>
+              <Link to="/NotFound" className="nav-button">Página 3</Link>
+              <Link to="/NotFound" className="nav-button">Página 4</Link>
+              <button className="nav-button" onClick={logout}>Logout</button>
+            </div>
+          </div>
         ) : (
           <>
             <Link to="/cadastro" className="nav-button">
