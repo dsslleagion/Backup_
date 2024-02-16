@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BeforeInsert, BeforeUpdate } from "typeorm";
-import { Noticia } from "./Noticia";
+
 import * as bcrypt from "bcrypt";
 
 @Entity({ name: "cliente" })
@@ -40,9 +40,7 @@ export class Cliente {
 
     @Column()
     profile: string;
-    
-    @OneToMany(() => Noticia, noticia => noticia.autor)
-    noticias: Noticia[];
+
 
     @BeforeInsert() //a função hashPassword é disparada antes do insert e update
     @BeforeUpdate()

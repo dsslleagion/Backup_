@@ -5,7 +5,7 @@ import './Login.css';
 
 const Login = () => {
   const { login } = useAuth();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook para navegação programática
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -19,29 +19,12 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/cliente/login', { // Aqui a função fetch está completa
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (!response.ok) {
-        throw new Error('Erro ao fazer login');
-      }
-
-      const data = await response.json();
-      const authToken = data.token;
-
-      // Armazenar o token no localStorage
-      localStorage.setItem('token', authToken);
-
-      // Chamar a função de login com os dados do formulário
-      await login(formData);
+      // Chamar a função de login com email e senha
+      await login(formData.email, formData.password);
 
       // Redirecionar para a página após o login bem-sucedido
       navigate('/');
+
     } catch (error) {
       console.error('Erro ao fazer login:', error.message);
     }

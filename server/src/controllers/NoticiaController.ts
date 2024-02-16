@@ -33,15 +33,33 @@ class NoticiaController {
     }
 
     public async store(req: Request, res: Response) {
-        try {
-            const noticiaRepository = AppDataSource.getRepository(Noticia);
-            const noticia = noticiaRepository.create(req.body);
-            const result = await noticiaRepository.save(noticia);
-            res.status(201).json(result);
-        } catch (error) {
-            res.status(500).json({ message: 'Erro ao criar a notícia.' });
-        }
+        const infoLog =  await info()
+    const warmLog = await warm()
+    try{
+      const createNoticia = req.body
+      const noticiaRepository = AppDataSource.getRepository(Noticia)
+      const insertNoticia = new Noticia();
+      insertNoticia.titulo = createNoticia.titulo
+      insertNoticia.conteudo = createNoticia.conteudo
+      insertNoticia.dataPublicacao = createNoticia.dataPublicacao
+      
+  
+  
+      const allNoticia = await  noticiaRepository.save(insertNoticia)
+      infoLog.insertOne({
+        date: new Date(),
+        message: "Noticias cadastradas com sucesso",
+        id: allNoticia.id
+      })
+      return res.json( allNoticia)
+    }catch(err){
+      warmLog.insertOne({
+        date: new Date(),
+        message: 'Erro ao cadastrar Noticia: ' + err
+      })
+      return res.status(400).json({error: err})
     }
+  }
 
     public async update(req: Request, res: Response) {
         try {

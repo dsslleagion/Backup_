@@ -13,10 +13,6 @@ export class Noticia {
     @Column({ nullable: false })
     conteudo: string;
 
-    @ManyToOne(() => Cliente, cliente => cliente.noticias)
-    @JoinColumn({ name: "autorId" })
-    autor: Cliente;
-
     @Column({ nullable: false, type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     dataPublicacao: Date;
 
