@@ -1,5 +1,3 @@
-/* index.css */
-
 /* Reset de estilos */
 * {
   margin: 0;
@@ -10,18 +8,15 @@
 /* Estilo global */
 body {
   font-family: Arial, sans-serif;
-  background-color: #dad5d5;
-  color: #fff;
+  background-image: url('./assets/planodefundo.jpg'); /* Adicione o caminho para sua imagem de fundo */
+  background-size: cover;
+  background-position: center;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5); /* Adicione um fundo semi-transparente para destacar o conteúdo */
+  border-radius: 10px; /* Adicione bordas arredondadas para o contêiner */
 }
-
-
-
-
-
-

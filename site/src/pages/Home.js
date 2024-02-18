@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import NewsCard from '../components/NewsCard';
+import './Home.css'; // Importe o arquivo CSS da Home
+import Footer from '../components/Footer';
 
 const Home = () => {
   const [news, setNews] = useState([]);
@@ -34,12 +36,15 @@ const Home = () => {
   return (
     <div>
       <NavigationBar />
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 main-container">
         <h1 className="text-3xl font-bold mb-4">Feed de Notícias</h1>
-        {news.map((item) => (
-          <NewsCard key={item.id} title={item.title} content={item.content} date={item.date} />
-        ))}
+        <div className="news-grid">
+          {news.map((item) => (
+            <NewsCard key={item.id} title={item.title} content={item.content} date={item.date} />
+          ))}
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };
