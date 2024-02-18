@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Footer.css';
 
 const Footer = () => {
+  const [showFooter, setShowFooter] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollBottom = scrollTop + windowHeight;
+
+    // Exibir o footer quando o usuário estiver próximo do final da página
+    if (scrollBottom >= documentHeight - 100) {
+      setShowFooter(true);
+    } else {
+      setShowFooter(false);
+    }
+  };
+
   return (
-    <footer className="footer-container">
+    <footer className={`footer-container ${showFooter ? 'show-footer' : ''}`}>
       <div className="footer-content">
         <div className="social-media">
           <h2>Redes Sociais</h2>

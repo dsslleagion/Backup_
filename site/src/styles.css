@@ -8,10 +8,14 @@
 /* Estilo global */
 body {
   font-family: Arial, sans-serif;
-  background-image: url('./assets/planodefundo.jpg'); /* Adicione o caminho para sua imagem de fundo */
+  background-image: url('./assets/planodefundo.jpg');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
+  padding-top: 170px;  /* Mantém a imagem fixa enquanto o conteúdo rola */
+  padding-bottom: 300px;
 }
+
 
 .container {
   max-width: 1200px;

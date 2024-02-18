@@ -4,6 +4,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed; /* Define a posição fixa */
+  width: 100%; /* Define a largura total */
+  z-index: 1000; /* Garante que a navbar esteja acima de outros elementos */
+  top: 0; /* Alinha a navbar ao topo */
 }
 
 .nav-left {
