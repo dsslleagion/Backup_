@@ -1,8 +1,14 @@
 /* Estilizações dos cards de notícias */
 .news-card {
-  width: 100%; /* Ajuste a largura para 100% para ocupar o espaço disponível em duas colunas */
+  width: 100%;
   box-sizing: border-box;
   cursor: pointer;
+  max-height: 200px; /* Defina uma altura máxima para os cards expandidos */
+  overflow: hidden; /* Esconda o conteúdo que excede a altura máxima */
+  position: relative; /* Defina a posição relativa para o card */
+}
+.news-card.expanded {
+  max-height: none; /* Remova a altura máxima quando o card estiver expandido */
 }
 
 
