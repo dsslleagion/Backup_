@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import './ProfilePage.css'; // Arquivo de estilos CSS
 import NavigationBar from '../components/NavigationBar';
+import Footer from '../components/Footer';
 
 const ProfilePage = () => {
   const { userData, updateUserData } = useAuth(); // Obtém os dados do usuário autenticado e a função para atualizar os dados
@@ -80,6 +81,7 @@ const ProfilePage = () => {
         <button type="submit">Atualizar Dados</button>
       </form>
     </div>
+    <Footer></Footer>
     </div>
   );
 };

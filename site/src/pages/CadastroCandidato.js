@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './CadastroCandidato.css';
+import NavigationBar from '../components/NavigationBar';
+import Footer from '../components/Footer';
 
 const CadastroCandidato = () => {
   const [formValues, setFormValues] = useState({
@@ -21,6 +23,8 @@ const CadastroCandidato = () => {
   };
 
   return (
+    <div>
+      <NavigationBar></NavigationBar>
     <div className="cadastro-candidato">
       <h1>Cadastro de Candidato</h1>
       <form onSubmit={handleSubmit}>
@@ -57,6 +61,8 @@ const CadastroCandidato = () => {
         {/* Adicione mais campos conforme necessário */}
         <button type="submit">Cadastrar Candidato</button>
       </form>
+    </div>
+    <Footer></Footer>
     </div>
   );
 };

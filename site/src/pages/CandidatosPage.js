@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './CandidatosPage.css';
+import NavigationBar from '../components/NavigationBar';
+import Footer from '../components/Footer';
 
 const CandidatosPage = () => {
   const [candidatos, setCandidatos] = useState([]);
@@ -18,6 +20,8 @@ const CandidatosPage = () => {
   }, []);
 
   return (
+    <div>
+      <NavigationBar></NavigationBar>
     <div className="candidatos-page">
       <h1>Candidatos a Eleições</h1>
       <ul>
@@ -29,6 +33,8 @@ const CandidatosPage = () => {
           </li>
         ))}
       </ul>
+    </div>
+    <Footer></Footer>
     </div>
   );
 };

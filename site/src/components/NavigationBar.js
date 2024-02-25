@@ -5,10 +5,12 @@ import logo from '../assets/logoccv.png';
 import profilePic from '../assets/perfil-sem-foto.png'; // Importe uma imagem de perfil fictícia
 import './NavigationBar.css';
 
+
 const NavigationBar = () => {
   const { userData, logout } = useAuth();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
+
 
   // Verificar se o usuário está autenticado de forma segura
   const isAuthenticated = userData && userData.token;
@@ -34,7 +36,7 @@ const NavigationBar = () => {
         <Link to="/" className="logo-link">
           <img src={logo} alt="Logo" className="logo-img" />
         </Link>
-        <span className="logo-text">Coletivo Camara Vermelha</span>
+        
       </div>
       <div className="nav-right">
         {!isAuthenticated && !isCadastroPage && (
@@ -68,6 +70,13 @@ const NavigationBar = () => {
               </div>
             )}
             <div className="nav-category" onClick={() => activateDropdown('dropdown-jornal')}>
+              <span className="nav-category-title">Forum</span>
+              <div className="dropdown-content dropdown-jornal">
+                <Link to="/Jornal" className="nav-link">Reclame aqui</Link>
+                <Link to="/Jornal" className="nav-link">Veja as principais reclamações</Link>              
+              </div>
+            </div>
+            <div className="nav-category" onClick={() => activateDropdown('dropdown-jornal')}>
               <span className="nav-category-title">Jornal</span>
               <div className="dropdown-content dropdown-jornal">
                 <Link to="/Jornal" className="nav-link">Cá entre Nós</Link>                
@@ -95,7 +104,7 @@ const NavigationBar = () => {
                   <div className="profile-dropdown">
                     <img src={profilePic} alt="Perfil" className="profile-pic-large" />
                     <div className="profile-info">
-                      <p>Nome do Usuário</p>
+                    <p>Bem-Vindo! {userData.cliente.nome}</p>
                       <Link to="/perfil" className="nav-link">Perfil</Link>
                       <button className="nav-link" onClick={logout}>Logout</button>
                     </div>

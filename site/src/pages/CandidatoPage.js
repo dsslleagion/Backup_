@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './CandidatoPage.css';
+import NavigationBar from '../components/NavigationBar';
+import Footer from '../components/Footer';
 
 const CandidatoPage = () => {
   const { id } = useParams();
@@ -19,11 +21,15 @@ const CandidatoPage = () => {
   }
 
   return (
+    <div>
+      <NavigationBar></NavigationBar>
     <div className="candidato-page">
       <h1>{candidato.nome}</h1>
       <p>Partido: {candidato.partido}</p>
       <p>Cargo: {candidato.cargo}</p>
       {/* Adicione mais detalhes do candidato conforme necessário */}
+    </div>
+    <Footer></Footer>
     </div>
   );
 };

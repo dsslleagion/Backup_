@@ -2,9 +2,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './TribunasPage.css';
+import NavigationBar from '../components/NavigationBar';
+import Footer from '../components/Footer';
 
 const TribunasPage = () => {
   return (
+    <div>
+      <NavigationBar></NavigationBar>
     <div className="tribunas-page">
       <h1>Tribunas</h1>
       <div className="tribuna">
@@ -18,6 +22,8 @@ const TribunasPage = () => {
         <Link to="/tribuna/saude">Ver detalhes</Link>
       </div>
       {/* Adicione mais tribunas conforme necessário */}
+    </div>
+    <Footer></Footer>
     </div>
   );
 };

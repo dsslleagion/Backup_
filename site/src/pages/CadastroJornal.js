@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import Button from '../components/Button';
 import './CadastroJornal.css';
+import Footer from '../components/Footer';
 
 const CadastroJornal = () => {
   const [formValues, setFormValues] = useState({
@@ -61,6 +62,7 @@ const CadastroJornal = () => {
           </form>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

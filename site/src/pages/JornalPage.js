@@ -3,6 +3,8 @@ import React from 'react';
 import './JornalPage.css';
 import NavigationBar from '../components/NavigationBar';
 
+import Footer from '../components/Footer';
+
 const JornalPage = () => {
   return (
     <div>
@@ -39,6 +41,7 @@ const JornalPage = () => {
         {/* Mais artigos podem ser adicionados conforme necessário */}
       </div>
     </div>
+    <Footer></Footer>
     </div>
   );
 };

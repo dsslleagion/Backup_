@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import './CadastroNoticia.css';
+import Footer from '../components/Footer';
 
 const CadastroNoticia = () => {
   const [formData, setFormData] = useState({
@@ -159,7 +160,9 @@ const CadastroNoticia = () => {
             </div>
           ))}
         </div>
+        
       </div>
+      <Footer />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import Button from '../components/Button';
 import './Cadastro.css';
+import Footer from '../components/Footer';
 
 const Cadastro = () => {
   const [formValues, setFormValues] = useState({
@@ -171,6 +172,7 @@ const Cadastro = () => {
           <Button type="submit" text="Cadastrar" />
         </form>
       </div>
+      <Footer />
     </div>
   );
 };
